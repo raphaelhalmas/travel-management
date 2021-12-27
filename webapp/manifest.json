@@ -89,17 +89,12 @@
                 {
                     "pattern": ":?query:",
                     "name": "TravelList",
-                    "target": [
-                        "TravelList"
-                    ]
+                    "target": "TravelList"
                 },
                 {
                     "pattern": "Travel({key}):?query:",
                     "name": "TravelObjectPage",
-                    "target": [
-                        "TravelList",
-                        "TravelObjectPage"
-                    ]
+                    "target": "TravelObjectPage"
                 }
             ],
             "targets": {
@@ -120,9 +115,7 @@
                             },
                             "initialLoad": "Enabled"
                         }
-                    },
-                    "controlAggregation": "beginColumnPages",
-                    "contextPattern": ""
+                    }
                 },
                 "TravelObjectPage": {
                     "type": "Component",
@@ -131,30 +124,31 @@
                     "options": {
                         "settings": {
                             "editableHeaderContent": false,
-                            "entitySet": "Travel"
+                            "entitySet": "Travel",
+                            "content": {
+                                "body": {
+                                    "sections": {
+                                        "itinerary": {
+                                            "name": "travelmanagement.ext.GeoMap",
+                                            "position": {
+                                                "anchor": "Booking",
+                                                "placement": "After"
+                                            },
+                                            "type": "XMLFragment",
+                                            "title": "Itinerary"
+                                        }
+                                    }
+                                }
+                            }
                         }
-                    },
-                    "controlAggregation": "midColumnPages",
-                    "contextPattern": "/Travel({key})"
+                    }
                 }
             },
-            "config": {
-                "flexibleColumnLayout": {
-                    "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
-                    "defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
-                },
-                "routerClass": "sap.f.routing.Router"
-            }
+            "config": {}
         },
         "contentDensities": {
             "compact": true,
             "cozy": true
-        },
-        "rootView": {
-            "viewName": "sap.fe.templates.RootContainer.view.Fcl",
-            "type": "XML",
-            "async": true,
-            "id": "appRootView"
         }
     },
     "sap.platform.abap": {
